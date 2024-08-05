@@ -1,0 +1,45 @@
+body{
+    /* background-color: #0a0312; */
+}
+.top{
+    display:flex;
+    justify-content: space-between;
+}
+.top-left{
+    display:flex;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.headerTitle {
+    margin-right: 25px;
+    font-family: poppins;
+    /* color: white; */
+    color: black;
+    font-size: 20px;
+    font-weight: 480;
+}
+.Nav{
+    margin-right: 25px;
+    font-family: poppins;
+    color: white;
+    font-size: 20px;
+    font-weight: 480;
+}
+.navHeaderText{
+    margin-top: 5px;
+    margin-right: 25px;
+    font-family: poppins;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ba3b4;
+    text-decoration: none;
+}
