@@ -1,0 +1,31 @@
+const { error } = require("console");
+const { resolve } = require("dns");
+
+function promisifiedFS(file,encoding){
+  return new Promise((resolve,reject)=>{
+    const fs = require("fs");
+   fs.readFile(file,encoding,(error,data)=>{
+     if(error){
+       reject(error)
+     }
+     else{
+       resolve(data)
+     }
+   });
+    
+  })  
+}
+
+const file = "a.txt";
+const encoding = "utf8";
+promisifiedFS(file,encoding)
+  .then(result=>{
+    console.log(result)
+  })
+.catch(err=>{
+  console.log(err);
+})
+
+                     
+
+
