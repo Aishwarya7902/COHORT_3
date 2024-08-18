@@ -1,27 +1,39 @@
-let ctr=0;
-function deleteTodo(index){
-    const element=document.getElementById(index);
-    element.parentNode.removeChild(element)
+let todos=[]
+function addTodo(){
+    todos.push({
+        title:document.querySelector("input").value
+    })
+    document.querySelector("input").value=""
+    render();
 }
 
-function addTodo(){
-    ++ctr;
-    const inputVal=document.querySelector("input");
-    const val=inputVal.value;
+function createTodo(todo,index){
+    const newHeading=document.createElement("h1");
+    newHeading.innerHTML=todo.title;
     
-    const newSpan=document.createElement("span");
-    newSpan.innerHTML=val;
-    newSpan.setAttribute("id", "span-" + ctr);
-
-    const buttonEl=document.createElement("button");
-    buttonEl.innerHTML="Delete"
-    buttonEl.setAttribute("onclick", `deleteTodo('div-${ctr}')`); // Set correct ID
+    const newButton=document.createElement("button");
+    newButton.innerHTML="Delete"
+    newButton.addEventListener("click", function() {
+        deleteTodo(index);
+    });
 
     const newDiv=document.createElement("div");
-    newDiv.setAttribute("id", "div-" + ctr); // Set unique ID
-    newDiv.appendChild(newSpan);
-    newDiv.appendChild(buttonEl);
-    document.getElementById("todoContainer").appendChild(newDiv)
-    
-    inputVal.value = "";
+    newDiv.appendChild(newHeading);
+    newDiv.appendChild(newButton);
+    return newDiv;
+
+
+}
+function render(){
+    const todoContainer=document.getElementById("todo");
+    todoContainer.innerHTML="";
+    for(let i=0;i<todos.length;i++){
+        const element=createTodo(todos[i],i);
+        todoContainer.appendChild(element);
+    }
+}
+
+function deleteTodo(index){
+    todos.splice(index,1);
+    render();
 }
