@@ -6,6 +6,16 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.card-title{
+#delBtn{
+    margin-left: 20px;
+    background-color: black;
     color: whitesmoke;
 }
+#newDiv{
+    margin-top: 25px;
+}
+#newSpan{
+    font-size: 30px;
+    font-style: italic;
+}
+
