@@ -1,0 +1,11 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+#parentDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.card-title{
+    color: whitesmoke;
+}
