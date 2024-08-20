@@ -1,19 +1,63 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+
+function App() {
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState("")
+
+  function addTodo() {
+    setTodos([...todos, {
+      title: inputValue
+    }])
+    setInputValue(""); //clear input value
+  }
+
+  function deleteTodo(index){
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos)
+  }
+
+ 
   return (
-    <> 
-        <input type="text" placeholder='Add Your todo Here'/>
-        <br />
-        <br />
-        <button onClick={<AddTodo/>}>Add Todo!!</button>
-      </>
+
+    <div>
+      <input
+        type='text'
+        value={inputValue}
+        placeholder='Add Todo'
+        onChange={(e) => setInputValue(e.target.value)
+
+        }
+      />
+      <button onClick={addTodo}>Add </button>
+      {todos.map((todo,index ) => (
+          <Todo 
+                  key={index}
+                  title={todo.title}
+                  index={index}
+                  deleteTodo={deleteTodo}
+                />
+         
+      )
+      )}
+
+    </div>
+
   )
 }
+
+function Todo({title,index,deleteTodo}) {
+
+
+  return <div>
+    <h1>{title}</h1>
+    <button onClick={() => deleteTodo(index)}>Delete</button>
+  </div>
+}
+
+
+
 
 export default App
