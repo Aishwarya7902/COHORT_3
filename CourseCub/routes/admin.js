@@ -3,7 +3,8 @@ const adminRouter=express.Router();
 const zod=require('zod');
 const jwt = require("jsonwebtoken");
 const { adminModel } = require('../db');
-const JWT_ADMIN_PASSWORD="helloadmin1";
+const {JWT_ADMIN_PASSWORD}=require('../config')
+
 //signup schema zod
 
 
