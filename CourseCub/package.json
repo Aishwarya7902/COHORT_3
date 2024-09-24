@@ -1,7 +1,6 @@
 {
   "name": "coursecub",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +11,8 @@
   "dependencies": {
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.6.3"
-  }
+    "mongoose": "^8.6.3",
+    "zod": "^3.23.8"
+  },
+  "description": ""
 }
