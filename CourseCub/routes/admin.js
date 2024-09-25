@@ -101,6 +101,11 @@ adminRouter.put("/course",adminMiddleware,async function(req,res){
         price,
         imageUrl,
     })
+    if(!course){
+        res.status(411).jsonp({
+            message:"You are trying to update someone else's course"
+        })
+    }
     res.json({
         message:"Course Updated Successfully",
         courseId:course._id
@@ -108,7 +113,7 @@ adminRouter.put("/course",adminMiddleware,async function(req,res){
 })
 //get all the courses
 
-adminRouter.get("courses/bulk",adminMiddleware,async function(req,res){
+adminRouter.get("/course/bulk",adminMiddleware,async function(req,res){
     const adminId=req.userId;
     const courses=await courseModel.find({
         creatorId:adminId
