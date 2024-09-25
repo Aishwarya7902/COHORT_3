@@ -86,11 +86,37 @@ adminRouter.post("/course",adminMiddleware,async function(req,res){
     })
 })
 
+//update a course
+
+adminRouter.put("/course",adminMiddleware,async function(req,res){
+    const adminId=req.userId;
+    const {title,description,price,imageUrl,courseId}=req.body;
+    const course=await courseModel.updateOne({
+        _id:courseId,
+        creatorId:adminId //creator of the course can only update it....no one else can
+    },
+        {
+        title,
+        description,
+        price,
+        imageUrl,
+    })
+    res.json({
+        message:"Course Updated Successfully",
+        courseId:course._id
+    })
+})
 //get all the courses
 
-adminRouter.get("courses/bulk",function(req,res){
+adminRouter.get("courses/bulk",adminMiddleware,async function(req,res){
+    const adminId=req.userId;
+    const courses=await courseModel.find({
+        creatorId:adminId
+    })
+
     res.json({
-        message:"These are the courses:"
+        message:"Your courses are:-",
+        courses
     })
 })
 
