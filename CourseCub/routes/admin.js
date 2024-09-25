@@ -2,8 +2,9 @@ const express=require('express');
 const adminRouter=express.Router();
 const zod=require('zod');
 const jwt = require("jsonwebtoken");
-const { adminModel } = require('../db');
+const { adminModel,courseModel } = require('../db');
 const {JWT_ADMIN_PASSWORD}=require('../config')
+const {adminMiddleware} =require('../middlewares/admin')
 
 //signup schema zod
 
@@ -69,9 +70,19 @@ adminRouter.post("/signin",async function(req,res){
 
 //create a course
 
-adminRouter.put("/course",function(req,res){
+adminRouter.post("/course",adminMiddleware,async function(req,res){
+    const adminId=req.userId;
+    const {title,description,price,imageUrl}=req.body;
+    const course=await courseModel.create({
+        title,
+        description,
+        price,
+        imageUrl,
+        creatorId:adminId
+    })
     res.json({
-        message:"Course Created Successfully"
+        message:"Course Created Successfully",
+        courseId:course._id
     })
 })
 
