@@ -1,4 +1,4 @@
-const { JWT_USER_PASSWORD } = require("../config");
+const { JWT_USER_PASSWORD } = require("../../config");
 const jwt=require('jsonwebtoken')
 
 

@@ -4,7 +4,7 @@ const zod=require('zod');
 const jwt = require("jsonwebtoken");
 const { adminModel,courseModel } = require('../db');
 const {JWT_ADMIN_PASSWORD}=require('../config')
-const {adminMiddleware} =require('../middlewares/admin')
+const {adminMiddleware} =require('../backend/middlewares/admin')
 
 //signup schema zod
 

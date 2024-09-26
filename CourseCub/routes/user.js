@@ -1,7 +1,7 @@
 const express=require('express');
 const { userModel, purchaseModel, courseModel } = require('../db');
 const jwt=require('jsonwebtoken')
-const {userMiddleware} =require('../middlewares/user')
+const {userMiddleware} =require('../backend/middlewares/user')
 
 const userRouter=express.Router();
 
