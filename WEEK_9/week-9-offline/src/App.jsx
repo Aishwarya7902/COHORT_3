@@ -1,42 +1,20 @@
-import { useState } from 'react'
-import { PostComponent } from './Post'
+import { useEffect, useState } from 'react'
+
 function App() {
 
-  const [posts,setPosts]=useState([]);
-
-  const postComponents=posts.map(post=>
-    <PostComponent
-    name={post.name}
-    subtitle={post.subtitle}
-    time={post.title}
-    image={post.image}
-    description={post.description}
-    
-    />
-  )
-  function addPost() {
-    setPosts([...posts,{
-      name: "harkirat",
-      subtitle: "10000 followers",
-      time: "2m ago",
-      image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
-      description: "What to know how to win big? Check out how these folks won $6000 in bounties."
-    }])
-  }
+const [count,setCount]=useState(1)
+function increment(){
+  setCount(currentVal=>currentVal+1)
+}
+useEffect(()=>{ //useEffect lets us perform side effect operations
+  setInterval(increment,1000)
+},[])//[] is the dependency array
+  
+  
 
   return (
-    <div style={{
-      background: "#dfe6e9",
-      height: "100vh",
-      width: "100vw"
-    }}>
-      <button onClick={addPost}>Add Post</button>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {postComponents}
-        </div>
-      </div>
-
+    <div>
+        {count}
     </div>
 
   )
