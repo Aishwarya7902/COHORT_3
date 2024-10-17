@@ -2,23 +2,28 @@ import { useEffect, useState } from 'react'
 
 function App() {
 
-const [count,setCount]=useState(1)
-function increment(){
-  setCount(currentVal=>currentVal+1)
-}
-useEffect(()=>{ //useEffect lets us perform side effect operations
-  setInterval(increment,1000)
-},[])//[] is the dependency array
-  
-  
+const todos=[{
+  title:"week 9.4",
+  done:false
+},{
+  title:"web3 week 4",
+  done:true
+}]
 
+const todosComponents=todos.map(todo=><Todo title={todo.title} done={todo.done}/>)
   return (
     <div>
-        {count}
+        {todosComponents}
     </div>
 
   )
 }
 
+function Todo({title,done}){
+  return <div>
+     {title}-{done ? "Done!!" : "Go and Finish"}
+
+  </div>
+}
 
 export default App
