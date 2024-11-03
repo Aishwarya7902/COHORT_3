@@ -1,0 +1,23 @@
+->Single Page Applications 
+(Single Page Applications (SPAs) are web applications that load a single HTML page and dynamically update that page as the user interacts with the app.)
+
+->Routing
+(routing means to create navigation between different views or components without refreshing the page.)
+
+->Layout
+(a layout is like a reusable template for your website)
+
+function Layout() {
+  return (
+    <div>
+      <header>Header</header>
+      <main>
+        <Outlet />  {/* This is where page-specific content will render */}
+      </main>
+      <footer>Footer</footer>
+    </div>
+  );
+}
+
+
+->
