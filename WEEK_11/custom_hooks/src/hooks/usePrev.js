@@ -5,5 +5,5 @@ export const usePrev=(value)=>{
     useEffect(()=>{
       ref.current=value;
     },[value])
-    return ref.current;
+    return ref.current;  //IMPORTANT **** ref.current will be returned first ..useEffect will be called later
 }
